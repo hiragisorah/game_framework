@@ -9,9 +9,12 @@
 #include <graphics\d3d11_renderer.h>
 
 //shader
-//#include <shader\point_2d.h>
-//#include <shader\point_3d.h>
-//#include <shader\point_squad_tex_3d.h>
+#include <shader\point_2d.h>
+#include <shader\point_3d.h>
+#include <shader\point_quad_fill_2d.h>
+#include <shader\point_quad_fill_3d.h>
+#include <shader\point_quad_tex_2d.h>
+#include <shader\point_quad_tex_3d.h>
 
 //vertex_buffer
 #include <vertex_buffer\one_point.h>
@@ -36,9 +39,12 @@ int __stdcall WinMain(HINSTANCE, HINSTANCE, char *, int)
 
 		{// ‰Šú‰»
 			{// ƒ[ƒh
-				main.Graphics()->RegistShader<Shader::Point3D>();
-				main.Graphics()->RegistShader<Shader::Point::Squad::Tex3D>();
 				main.Graphics()->RegistShader<Shader::Point2D>();
+				main.Graphics()->RegistShader<Shader::Point3D>();
+				main.Graphics()->RegistShader<Shader::Point::Quad::Tex2D>();
+				main.Graphics()->RegistShader<Shader::Point::Quad::Tex3D>();
+				main.Graphics()->RegistShader<Shader::Point::Quad::Fill2D>();
+				main.Graphics()->RegistShader<Shader::Point::Quad::Fill3D>();
 				main.Graphics()->RegistVertexBuffer<VertexBuffer::OnePoint>();
 			}
 

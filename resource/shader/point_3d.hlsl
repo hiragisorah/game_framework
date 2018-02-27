@@ -3,6 +3,8 @@ cbuffer global
 	matrix g_w;
 	matrix g_v;
 	matrix g_p;
+
+    float4 g_color;
 };
 
 struct PS_INPUT

@@ -2,6 +2,8 @@ cbuffer global
 {
     matrix g_w : packoffset(c0);
     float2 g_viewport : packoffset(c4);
+
+    float4 g_color : packoffset(c5);
 };
 
 struct PS_INPUT
@@ -23,5 +25,5 @@ PS_INPUT VS(float4 pos : POSITION)
 
 float4 PS(PS_INPUT Input) : SV_Target
 {
-    return float4(1, 1, 1, 1);
+    return g_color;
 }

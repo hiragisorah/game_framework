@@ -11,7 +11,10 @@ namespace Shader
 		struct CB
 		{
 			ALIGN16 D3DXMATRIX w_;
-			ALIGN16 D3DXVECTOR2 view_port_;
+
+			ALIGN16 D3DXVECTOR2 view_port_ = { 1280.f, 720.f };
+
+			ALIGN16 D3DXCOLOR color_ = { 1.f, 1.f, 1.f, 1.f };
 		};
 	public:
 		Point2D(void) : D3D11Shader("point_2d"_hlsl)

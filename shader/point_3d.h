@@ -13,6 +13,8 @@ namespace Shader
 			ALIGN16 D3DXMATRIX w_;
 			ALIGN16 D3DXMATRIX v_;
 			ALIGN16 D3DXMATRIX p_;
+
+			ALIGN16 D3DXCOLOR color_ = { 1.f, 1.f, 1.f, 1.f };
 		};
 	public:
 		Point3D(void) : D3D11Shader("point_3d"_hlsl)

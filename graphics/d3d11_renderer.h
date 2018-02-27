@@ -191,7 +191,7 @@ public:
 			}
 		}
 
-		this->swap_chain_->Present(0, 0);
+		this->swap_chain_->Present(1, 0);
 	}
 
 public:

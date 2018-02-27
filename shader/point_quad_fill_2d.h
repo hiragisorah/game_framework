@@ -7,24 +7,23 @@ namespace Shader
 {
 	namespace Point
 	{
-		namespace Squad
+		namespace Quad
 		{
-			class Tex3D : public D3D11Shader
+			class Fill2D : public D3D11Shader
 			{
 			public:
 				struct CB
 				{
 					ALIGN16 D3DXMATRIX w_;
-					ALIGN16 D3DXMATRIX v_;
-					ALIGN16 D3DXMATRIX p_;
 
-					ALIGN16 D3DXVECTOR2 size_;
-					ALIGN16 D3DXVECTOR2 split_;
+					ALIGN16 D3DXVECTOR2 view_port_ = { 1280.f, 720.f };
 
-					ALIGN16 float pattern_;
+					ALIGN16 D3DXVECTOR2 size_ = { 1.f, 1.f };
+
+					ALIGN16 D3DXCOLOR color_ = { 1.f, 1.f, 1.f, 1.f };
 				};
 			public:
-				Tex3D(void) : D3D11Shader("point_squad_tex_3d"_hlsl)
+				Fill2D(void) : D3D11Shader("point_quad_fill_2d"_hlsl)
 				{
 					D3D11_INPUT_ELEMENT_DESC layout = { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 };
 					this->element_desc_.emplace_back(layout);

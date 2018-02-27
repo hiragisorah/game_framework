@@ -4,7 +4,7 @@
 #include <graphics\d3d11_model.h>
 
 #include <vertex_buffer\one_point.h>
-#include <shader\point_squad_fill_3d.h>
+#include <shader\point_quad_fill_3d.h>
 
 #include <component\movement.h>
 #include <component\transform.h>
@@ -14,9 +14,9 @@ namespace Model
 {
 	namespace Point
 	{
-		namespace Squad
+		namespace Quad
 		{
-			class Fill3D : public D3D11Model<VertexBuffer::OnePoint, Shader::Point::Squad::Fill3D>
+			class Fill3D : public D3D11Model<VertexBuffer::OnePoint, Shader::Point::Quad::Fill3D>
 			{
 			public:
 				Fill3D(IScene<ID3D11Model> * parent) : D3D11Model(parent)
@@ -30,8 +30,6 @@ namespace Model
 					this->constant_buffer_.w_ = this->Get<Component::Transform>()->GetMatrix();
 					this->constant_buffer_.v_ = this->Parent()->Get<Component::Camera>()->View();
 					this->constant_buffer_.p_ = this->Parent()->Get<Component::Camera>()->Projection();
-
-					this->constant_buffer_.size_ = { 16.f, 9.f };
 				}
 			};
 		}

@@ -68,12 +68,20 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(DXSDK_DIR)Include;$(ProjectDir);$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(DXSDK_DIR)Include;$(ProjectDir);$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -85,11 +93,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -113,9 +122,11 @@
     <ClInclude Include="component.h" />
     <ClInclude Include="component\camera.h" />
     <ClInclude Include="component\movement.h" />
+    <ClInclude Include="component\sample_event.h" />
     <ClInclude Include="component\texture_manager.h" />
     <ClInclude Include="component\transform.h" />
     <ClInclude Include="engine.h" />
+    <ClInclude Include="game_object\sample_object.h" />
     <ClInclude Include="graphics\d3d11_model.h" />
     <ClInclude Include="graphics\d3d11_renderer.h" />
     <ClInclude Include="graphics\d3d11_shader.h" />
@@ -124,20 +135,26 @@
     <ClInclude Include="graphics\d3d9_renderer.h" />
     <ClInclude Include="model\point_2d.h" />
     <ClInclude Include="model\point_3d.h" />
-    <ClInclude Include="model\point_squad_fill_3d.h" />
-    <ClInclude Include="model\point_squad_tex_3d.h" />
+    <ClInclude Include="model\point_quad_fill_2d.h" />
+    <ClInclude Include="model\point_quad_fill_3d.h" />
+    <ClInclude Include="model\point_quad_tex_2d.h" />
+    <ClInclude Include="model\point_quad_tex_3d.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="scene\opening.h" />
     <ClInclude Include="shader\point_2d.h" />
     <ClInclude Include="shader\point_3d.h" />
-    <ClInclude Include="shader\point_squad_fill_3d.h" />
-    <ClInclude Include="shader\point_squad_tex_3d.h" />
+    <ClInclude Include="shader\point_quad_fill_2d.h" />
+    <ClInclude Include="shader\point_quad_fill_3d.h" />
+    <ClInclude Include="shader\point_quad_tex_2d.h" />
+    <ClInclude Include="shader\point_squad_tex_2d.h" />
+    <ClInclude Include="shader\point_quad_tex_3d.h" />
     <ClInclude Include="utils\memory.h" />
     <ClInclude Include="vertex_buffer\one_point.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="component\movement.cpp" />
+    <ClCompile Include="component\sample_event.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
