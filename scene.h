@@ -63,6 +63,26 @@ public:
 private:
 	bool pause_ = false;
 	bool running_ = true;
+	IScene<_Model> * next_scene_ = nullptr;
+
+public:
+	void Shutdown(void)
+	{
+		this->running_ = false;
+	}
+	void Pause(bool b)
+	{
+		this->pause_ = b;
+	}
+	template<class _Scene, class ... Args>
+	void ChangeScene(Args ... args)
+	{
+		this->next_scene_ = new _Scene(args ...);
+	}
+	IScene<_Model> * const NextScene(void)
+	{
+		return this->next_scene_;
+	}
 
 public:
 	bool Run(void)

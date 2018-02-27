@@ -24,8 +24,17 @@ public:
 		{// ƒƒCƒ“ƒ‹[ƒv
 			while (this->window_->MessageLoop() && this->scene_ && this->scene_->Run())
 			{
-				{//•`‰æ
+				{// •`‰æ
 					this->graphics_->Render(this->scene_);
+				}
+
+				{// ƒV[ƒ“‘JˆÚ
+					if (this->scene_->NextScene())
+					{
+						auto next_scene = this->scene_->NextScene();
+						utils::SafeDelete(this->scene_);
+						this->scene_ = next_scene;
+					}
 				}
 			}
 		}
